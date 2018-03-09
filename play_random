@@ -19,7 +19,6 @@ do
 	echo -e "\e[36mLEFT ARROW	: \e[39mREWIND";
 	
 	read -N 1 -s -r input;
-	#read -rsn1 input;
 	echo $input;
 
 	if [ "$input" = "r" ]; then
@@ -48,7 +47,7 @@ do
 			echo -e "${files[RANDOM % ${#files[@]}]}" >> playlist;
 		done < <( find . -name "*.mp3" -print0 )
 
-		read -n 1 -s -r -p "Playlist created. Press any key to continue";
+		read -N 1 -s -r -p "Playlist created. Press any key to continue";
 	fi
 
 	if [ "$input" = "l" ]; then
@@ -77,7 +76,7 @@ do
 			esac
 		done 
 
-		read -n 1 -s -r -p "Press any key to continue";
+		read -N 1 -s -r -p "Press any key to continue";
 	fi
 
 	if [ "$input" = "q" ]; then
