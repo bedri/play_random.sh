@@ -6,7 +6,7 @@ do
 	echo -e "\e[92mMENU\e[39m";
 	echo -e "\e[92m=====================================\e[39m\n";
 	echo -e "\e[96m r)\e[97m Play a random song";
-	echo -e "\e[96m a)\e[97m Generate a random playlist and play it";
+	echo -e "\e[96m a)\e[97m Play songs from a randomly generated playlist";
 	echo -e "\e[96m g)\e[97m Generate a random playlist";
 	echo -e "\e[96m l)\e[97m List available songs";
 	echo -e "\e[96m q)\e[97m Quit\n";
@@ -17,6 +17,7 @@ do
 	echo -e "\e[36mSPACEBAR	: \e[39mPAUSE";
 	echo -e "\e[36mRIGHT ARROW	: \e[39mFORWARD";
 	echo -e "\e[36mLEFT ARROW	: \e[39mREWIND";
+	echo -e "\e[36mENTER		: \e[39mNEXT SONG IN PLAYLIST";
 	
 	read -N 1 -s -r input;
 	echo $input;
@@ -32,15 +33,18 @@ do
 	fi
 
 	if [ "$input" = "a" ]; then
+		rm -f playlist;
 		files=();
 		while IFS=  read -r -d $'\0'; do
 			files+=("$REPLY")
 			echo -e "${files[RANDOM % ${#files[@]}]}" >> playlist;
 		done < <( find . -name "*.mp3" -print0 )
-		mplayer -msgcolor -playlist playlist;
+		mplayer -msgcolor -shuffle -playlist playlist;
+		rm -f playlist
 	fi
 
 	if [ "$input" = "g" ]; then
+		rm -f playlist;
 		files=();
 		while IFS=  read -r -d $'\0'; do
 			files+=("$REPLY")
