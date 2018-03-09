@@ -11,3 +11,5 @@ Visit [stackexchange answer](https://unix.stackexchange.com/questions/26313/colo
 
 find command read one line at a time trick by [John1024](https://stackoverflow.com/users/3030305/john1024)
 Visit [stackexchange answer](https://stackoverflow.com/questions/23356779/how-can-i-store-find-command-result-as-arrays-in-bash) for details.
+
+Bash array documentation can be found in [http://tldp.org/LDP/abs/html/arrays.html](http://tldp.org/LDP/abs/html/arrays.html)
