@@ -26,7 +26,7 @@ do
 	fi
 
 	if [ "$input" = "l" ]; then
-		find . -name "*.mp3" -print;
+		find . -name "*.mp3" -print | more;
 		echo -e "Press any key to continue...";
 		read -rsn1;
 	fi
