@@ -51,7 +51,6 @@ do
 			esac
 		done 
 
-#		find . -print -f -name "*.mp3" | more;
 		echo -e "Press any key to continue...";
 		read -rsn1;
 	fi
