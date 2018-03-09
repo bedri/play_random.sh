@@ -20,9 +20,12 @@ do
 	echo $input;
 
 	if [ "$input" = "r" ]; then
-		files=(./youtube_playlists/ultimate/*.mp3);
+		files=();
+		while IFS=  read -r -d $'\0'; do
+			files+=("$REPLY")
+		done < <( find . -name "*.mp3" -print0 )
 		echo -e "${files[RANDOM % ${#files[@]}]}";
-		mplayer "${files[RANDOM % ${#files[@]}]}";
+		mplayer -msgcolor "${files[RANDOM % ${#files[@]}]}";
 	fi
 
 	if [ "$input" = "l" ]; then
