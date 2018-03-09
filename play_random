@@ -1,0 +1,38 @@
+#!/bin/bash
+
+while(true);
+do
+	clear;
+	echo -e "\e[92mMENU\e[39m";
+	echo -e "\e[92m=====================================\e[39m\n";
+	echo -e "\e[96m r)\e[97m Play a random song";
+	echo -e "\e[96m l)\e[97m List available songs";
+	echo -e "\e[96m q)\e[97m Quit\n";
+	echo -e "\e[93mSelect an option\e[39m\n"
+	echo -e "\e[33mUseful player commands:\e[39m";
+	echo -e "\e[33m=====================================\e[39m";
+	echo -e "\e[36mCTRL+C		: \e[39mSTOP (cancel playing)";
+	echo -e "\e[36mSPACEBAR	: \e[39mPAUSE";
+	echo -e "\e[36mRIGHT ARROW	: \e[39mFORWARD";
+	echo -e "\e[36mLEFT ARROW	: \e[39mREWIND";
+
+	read -rsn1 input;
+	echo $input;
+
+	if [ "$input" = "r" ]; then
+		files=(./youtube_playlists/ultimate/*.mp3);
+		echo -e "${files[RANDOM % ${#files[@]}]}";
+		mplayer "${files[RANDOM % ${#files[@]}]}";
+	fi
+
+	if [ "$input" = "l" ]; then
+		find . -name "*.mp3" -print;
+		echo -e "Press any key to continue...";
+		read -rsn1;
+	fi
+
+	if [ "$input" = "q" ]; then
+		exit 1;
+	fi
+done
+
