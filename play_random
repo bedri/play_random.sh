@@ -78,7 +78,7 @@ do
 					;; 
 				*) printf "ERROR - type not yet catered for\n";;  
 			esac
-		done 
+		done  | more
 
 		read -N 1 -s -r -p "Press any key to continue";
 	fi
